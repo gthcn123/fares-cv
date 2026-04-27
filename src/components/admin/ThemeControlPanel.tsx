@@ -119,6 +119,45 @@ const TOKEN_GROUPS = [
       { name: '--chart-4', display: 'Chart Color 4' },
       { name: '--chart-5', display: 'Chart Color 5' }
     ]
+  },
+  {
+    id: 'shadows',
+    title: 'Shadows & Effects',
+    description: 'Shadow definitions and visual effects',
+    tokens: [
+      { name: '--shadow-pill', display: 'Pill Shadow' },
+      { name: '--shadow-soft', display: 'Soft Shadow' },
+      { name: '--shadow-elevated', display: 'Elevated Shadow' },
+      { name: '--shadow-glow', display: 'Glow Shadow' }
+    ]
+  },
+  {
+    id: 'gradients',
+    title: 'Gradients',
+    description: 'Gradient definitions for backgrounds and text',
+    tokens: [
+      { name: '--gradient-hero', display: 'Hero Gradient' },
+      { name: '--gradient-primary', display: 'Primary Gradient' },
+      { name: '--gradient-mesh', display: 'Mesh Gradient' }
+    ]
+  },
+  {
+    id: 'effects',
+    title: 'Border & Radius',
+    description: 'Border radius and spacing effects',
+    tokens: [
+      { name: '--radius', display: 'Border Radius (in rem)' }
+    ]
+  },
+  {
+    id: 'typography',
+    title: 'Typography',
+    description: 'Font families and text styling',
+    tokens: [
+      { name: '--font-display', display: 'Display Font Family' },
+      { name: '--font-body', display: 'Body Font Family' },
+      { name: '--font-mono', display: 'Monospace Font Family' }
+    ]
   }
 ];
 
@@ -248,6 +287,7 @@ export function ThemeControlPanel() {
                       displayName={token.display}
                       currentValue={getDisplayValue(token.name)}
                       onValueChange={(value) => handleGlobalTokenChange(token.name, value)}
+                      currentBackground="var(--background)"
                     />
                   ))}
                 </TokenGroup>
@@ -311,6 +351,7 @@ export function ThemeControlPanel() {
                       displayName={token.display}
                       currentValue={getDisplayValue(token.name)}
                       onValueChange={(value) => handlePageTokenChange(token.name, value)}
+                      currentBackground="var(--background)"
                     />
                   ))}
                 </TokenGroup>
@@ -380,6 +421,7 @@ export function ThemeControlPanel() {
                           displayName={token.display}
                           currentValue="inherit"
                           onValueChange={(value) => handleMultiPageTokenChange(token.name, value)}
+                          currentBackground="var(--background)"
                         />
                       ))}
                     </TokenGroup>

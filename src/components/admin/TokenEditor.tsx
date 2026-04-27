@@ -12,6 +12,7 @@ export interface TokenEditorProps {
   defaultValue?: string;
   onValueChange: (value: string) => void;
   disabled?: boolean;
+  currentBackground?: string; // Current background for visual reference
 }
 
 export function TokenEditor({
@@ -20,7 +21,8 @@ export function TokenEditor({
   currentValue,
   defaultValue,
   onValueChange,
-  disabled = false
+  disabled = false,
+  currentBackground = 'var(--background)'
 }: TokenEditorProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [inputValue, setInputValue] = useState(currentValue);
@@ -102,7 +104,29 @@ export function TokenEditor({
 
       {/* Expanded content */}
       {isExpanded && (
-        <div className="px-4 py-4 bg-muted/30 border-t border-border space-y-3">
+        <div className="px-4 py-4 bg-muted/30 border-t border-border space-y-4">
+          {/* Live preview of color on background */}
+          <div className="flex flex-col gap-2">
+            <label className="text-xs font-medium text-foreground">
+              Live Preview
+            </label>
+            <div 
+              className="p-6 rounded-lg border border-border flex flex-col gap-3"
+              style={{ backgroundColor: currentBackground }}
+            >
+              <div className="text-sm font-medium" style={{ color: inputValue }}>
+                Sample Text
+              </div>
+              <div className="text-xs" style={{ color: inputValue, opacity: 0.7 }}>
+                Text with 70% opacity
+              </div>
+              <div 
+                className="h-6 rounded border border-border"
+                style={{ backgroundColor: inputValue }}
+              />
+            </div>
+          </div>
+
           {/* Color picker */}
           <div className="flex items-center gap-3">
             <label htmlFor={`picker-${tokenName}`} className="text-xs font-medium text-foreground">

@@ -227,7 +227,7 @@ export function GithubActivitySection() {
               </div>
               <h2 className="font-display h-display-md pb-2 max-w-2xl">
                 {t("Real activity. ", "نشاط حقيقي. ")}
-                <span className="italic text-[oklch(0.42_0.2_255)]">
+                <span className="italic text-primary">
                   {t("Synced live.", "متزامن لحظياً.")}
                 </span>
               </h2>
@@ -341,19 +341,36 @@ export function GithubActivitySection() {
                 href={r.html_url}
                 target="_blank"
                 rel="noreferrer"
-                className="group rounded-2xl border border-border bg-background/80 backdrop-blur-md hover:bg-secondary/60 p-4 sm:p-5 transition flex flex-col gap-3"
+                className="group relative rounded-2xl border border-border bg-[var(--surface-1)] backdrop-blur-md overflow-hidden p-4 sm:p-5 transition-all duration-300 hover:border-primary/40 hover:shadow-lg flex flex-col gap-3 hover-lift"
               >
-                <div className="flex items-start justify-between gap-3">
+                {/* Gradient accent on hover */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-300"
+                  style={{
+                    background: `radial-gradient(circle, ${langColor(r.language)} 0%, transparent 70%)`,
+                  }}
+                />
+                {/* Top accent line on hover */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${langColor(r.language)}, transparent)`,
+                  }}
+                />
+                
+                <div className="relative flex items-start justify-between gap-3">
                   <div className="font-display text-lg tracking-tight truncate">{r.name}</div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition shrink-0 mt-1" />
                 </div>
-                <div className="text-xs text-muted-foreground line-clamp-2 min-h-[2.4em]">
+                <div className="relative text-xs text-muted-foreground line-clamp-2 min-h-[2.4em]">
                   {r.description || t("No description", "بدون وصف")}
                 </div>
-                <div className="flex items-center gap-3 text-[11px] text-muted-foreground mt-auto">
+                <div className="relative flex items-center gap-3 text-[11px] text-muted-foreground mt-auto">
                   {r.language && (
                     <span className="inline-flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full" style={{ background: langColor(r.language) }} />
+                      <span className="h-2 w-2 rounded-full ring-1 ring-offset-1 transition-shadow" style={{ background: langColor(r.language) }} />
                       {r.language}
                     </span>
                   )}
