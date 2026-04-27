@@ -10,7 +10,7 @@ import type { ReactNode } from "react";
  * This gives the homepage a deliberate, magazine-style rhythm of contrasting
  * sections while keeping the design system cohesive.
  */
-export type BandVariant = "light" | "dark" | "primary" | "surface" | "soft";
+export type BandVariant = "light" | "dark" | "primary" | "surface" | "soft" | "palette-1" | "palette-2" | "palette-3" | "palette-4" | "palette-5";
 
 interface Props {
   variant: BandVariant;
@@ -33,6 +33,12 @@ const variantClasses: Record<BandVariant, string> = {
   primary: "bg-band-primary text-band-primary-foreground",
   surface: "bg-band-surface text-band-surface-foreground",
   soft: "bg-band-soft text-band-soft-foreground",
+  // 5-tone palette: light mode goes light→dark, dark mode reverses to dark→light for contrast
+  "palette-1": "[--palette-bg:var(--palette-1-light)] [--palette-fg:var(--palette-1-light-fg)] dark:[--palette-bg:var(--palette-1-dark)] dark:[--palette-fg:var(--palette-1-dark-fg)] bg-[color:var(--palette-bg)] text-[color:var(--palette-fg)]",
+  "palette-2": "[--palette-bg:var(--palette-2-light)] [--palette-fg:var(--palette-2-light-fg)] dark:[--palette-bg:var(--palette-2-dark)] dark:[--palette-fg:var(--palette-2-dark-fg)] bg-[color:var(--palette-bg)] text-[color:var(--palette-fg)]",
+  "palette-3": "[--palette-bg:var(--palette-3-light)] [--palette-fg:var(--palette-3-light-fg)] dark:[--palette-bg:var(--palette-3-dark)] dark:[--palette-fg:var(--palette-3-dark-fg)] bg-[color:var(--palette-bg)] text-[color:var(--palette-fg)]",
+  "palette-4": "[--palette-bg:var(--palette-4-light)] [--palette-fg:var(--palette-4-light-fg)] dark:[--palette-bg:var(--palette-4-dark)] dark:[--palette-fg:var(--palette-4-dark-fg)] bg-[color:var(--palette-bg)] text-[color:var(--palette-fg)]",
+  "palette-5": "[--palette-bg:var(--palette-5-light)] [--palette-fg:var(--palette-5-light-fg)] dark:[--palette-bg:var(--palette-5-dark)] dark:[--palette-fg:var(--palette-5-dark-fg)] bg-[color:var(--palette-bg)] text-[color:var(--palette-fg)]",
 };
 
 const patternClasses: Record<NonNullable<Props["pattern"]>, string> = {

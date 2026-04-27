@@ -47,35 +47,33 @@ function Index() {
       <Hero />
       <Marquee items={tagsEn} itemsAr={tagsAr} key={lang} />
 
-      {/* Curated rhythm — five-tone band system creates magazine-style
-          progression: light → surface → dark → soft → dark. Each transition
-          is intentional and the contrast walks the eye down the page. */}
-      <SectionBand variant="light" pattern="grid-fine" divider roundBottom>
+      {/* Curated rhythm — five-tone palette creates professional progression
+          from light to dark in light mode, dark to light in dark mode. Each
+          section gets a distinct color creating visual rhythm and hierarchy. */}
+      <SectionBand variant="palette-1" pattern="grid-fine" divider roundBottom>
         <AboutSection />
       </SectionBand>
 
-      {/* Languages — moved above Skills. Uses an inverted-theme band so it
-          reads as a "negative" of the surrounding sections (dark in light
-          mode, light in dark mode). */}
-      <SectionBand variant="dark" pattern="none" divider roundTop roundBottom>
+      {/* Languages — palette-2 creates subtle progression */}
+      <SectionBand variant="palette-2" pattern="none" divider roundTop roundBottom>
         <LanguagesSection />
       </SectionBand>
 
-      <SectionBand variant="surface" pattern="grid-dots" divider roundTop roundBottom>
+      <SectionBand variant="palette-3" pattern="grid-dots" divider roundTop roundBottom>
         <SkillsSection />
       </SectionBand>
 
-      <SectionBand variant="dark" pattern="grid-fine" divider roundTop roundBottom>
+      <SectionBand variant="palette-4" pattern="grid-fine" divider roundTop roundBottom>
         <ExperienceSection />
       </SectionBand>
 
-      {/* Signature inverted band — pure black in light, pure white in dark. */}
-      <SectionBand variant="dark" pattern="none" divider roundTop roundBottom>
+      {/* Signature dark palette — creates strong visual anchor */}
+      <SectionBand variant="palette-5" pattern="none" divider roundTop roundBottom>
         <AchievementsSection />
       </SectionBand>
 
-      {/* Bridge to /explore — projects + GitHub activity now live there */}
-      <SectionBand variant="soft" pattern="aurora" divider roundTop roundBottom>
+      {/* Bridge to /explore — palette-3 for middle contrast */}
+      <SectionBand variant="palette-3" pattern="aurora" divider roundTop roundBottom>
         <section className="relative py-20 sm:py-28">
           <div className="container mx-auto px-6 max-w-5xl text-center">
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground">
@@ -104,7 +102,7 @@ function Index() {
         </section>
       </SectionBand>
 
-      <SectionBand variant="dark" pattern="grid-fine" divider roundTop>
+      <SectionBand variant="palette-5" pattern="grid-fine" divider roundTop>
         <ContactSection />
       </SectionBand>
     </div>
