@@ -156,8 +156,8 @@ export function Hero() {
             className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-border/70 bg-background/60 backdrop-blur-md soft-shadow relative overflow-hidden"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             <span className="relative text-xs sm:text-sm text-muted-foreground tracking-wide font-medium">
               {t(
@@ -217,7 +217,7 @@ export function Hero() {
             return (
               <span
                 key={word}
-                className={`block overflow-hidden pb-[0.12em] ${isAccent ? "italic font-normal text-sky-100 dark:text-sky-200 [text-shadow:0_2px_18px_rgba(8,30,70,0.55)]" : ""}`}
+                className={`block overflow-hidden pb-[0.12em] ${isAccent ? "italic font-normal text-accent [text-shadow:0_2px_18px_color-mix(in_oklab,var(--primary)_35%,transparent)]" : ""}`}
               >
                 {chars.map((ch, ci) => (
                   <motion.span

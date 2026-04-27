@@ -72,7 +72,7 @@ function ExplorePage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-400/30 bg-sky-500/10 text-sky-200 text-[10px] sm:text-xs uppercase tracking-[0.3em] backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/30 bg-white/10 text-white/80 text-[10px] sm:text-xs uppercase tracking-[0.3em] backdrop-blur-md"
           >
             <Sparkles className="h-3 w-3" />
             {t("Beyond the CV", "ما وراء السيرة")}
@@ -86,7 +86,7 @@ function ExplorePage() {
             className="mt-6 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.86] tracking-[-0.05em] text-white [text-shadow:0_4px_40px_rgba(8,30,90,0.65)]"
           >
             <span className="block">{t("Explore", "استكشف")}</span>
-            <span className="block italic font-normal text-sky-300/95">
+            <span className="block italic font-normal text-white/90">
               {t("the workshop.", "الورشة.")}
             </span>
           </motion.h1>
