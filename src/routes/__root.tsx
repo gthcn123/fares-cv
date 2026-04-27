@@ -12,6 +12,7 @@ import { PageBoot } from "@/components/PageBoot";
 import { KitsysArrowField } from "@/components/KitsysArrowField";
 import { Navbar } from "@/components/Navbar";
 import { BackToTop } from "@/components/BackToTop";
+import { ThemeEditorButton } from "@/components/ThemeEditorButton";
 
 
 function NotFoundComponent() {
@@ -99,6 +100,7 @@ function RootComponent() {
             <AnchorPulse />
             <BackToTop />
             <Navbar />
+            <ThemeEditorButton />
             <Toaster position="bottom-right" />
           </SiteDataProvider>
         </LanguageProvider>
