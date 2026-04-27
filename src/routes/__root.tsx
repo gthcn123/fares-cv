@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeOverridesProvider } from "@/components/ThemeOverridesProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SiteDataProvider } from "@/components/SiteDataProvider";
 import { useEffect, useState } from "react";
@@ -88,18 +89,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <ThemeProvider>
-      <LanguageProvider>
-        <SiteDataProvider>
-          <PageBoot />
-          <HeroArrowBackdrop />
-          <TopProgressBar />
-          <AnimatedOutlet />
-          <AnchorPulse />
-          <BackToTop />
-          <Navbar />
-          <Toaster position="bottom-right" />
-        </SiteDataProvider>
-      </LanguageProvider>
+      <ThemeOverridesProvider>
+        <LanguageProvider>
+          <SiteDataProvider>
+            <PageBoot />
+            <HeroArrowBackdrop />
+            <TopProgressBar />
+            <AnimatedOutlet />
+            <AnchorPulse />
+            <BackToTop />
+            <Navbar />
+            <Toaster position="bottom-right" />
+          </SiteDataProvider>
+        </LanguageProvider>
+      </ThemeOverridesProvider>
     </ThemeProvider>
   );
 }

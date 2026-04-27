@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThemeEditorRouteImport } from './routes/theme-editor'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as CommentsRouteImport } from './routes/comments'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ThemeEditorRoute = ThemeEditorRouteImport.update({
+  id: '/theme-editor',
+  path: '/theme-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/comments': typeof CommentsRoute
   '/explore': typeof ExploreRoute
+  '/theme-editor': typeof ThemeEditorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/comments': typeof CommentsRoute
   '/explore': typeof ExploreRoute
+  '/theme-editor': typeof ThemeEditorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/comments': typeof CommentsRoute
   '/explore': typeof ExploreRoute
+  '/theme-editor': typeof ThemeEditorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/comments' | '/explore'
+  fullPaths: '/' | '/comments' | '/explore' | '/theme-editor'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/comments' | '/explore'
-  id: '__root__' | '/' | '/comments' | '/explore'
+  to: '/' | '/comments' | '/explore' | '/theme-editor'
+  id: '__root__' | '/' | '/comments' | '/explore' | '/theme-editor'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CommentsRoute: typeof CommentsRoute
   ExploreRoute: typeof ExploreRoute
+  ThemeEditorRoute: typeof ThemeEditorRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/theme-editor': {
+      id: '/theme-editor'
+      path: '/theme-editor'
+      fullPath: '/theme-editor'
+      preLoaderRoute: typeof ThemeEditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore': {
       id: '/explore'
       path: '/explore'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CommentsRoute: CommentsRoute,
   ExploreRoute: ExploreRoute,
+  ThemeEditorRoute: ThemeEditorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
