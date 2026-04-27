@@ -4,6 +4,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { ThemeLangToggle } from "./ThemeLangToggle";
 import { useLang } from "./LanguageProvider";
 import { useSiteData } from "./SiteDataProvider";
+import { Home, Compass, MessageSquare, Mail } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,88 +27,90 @@ export function Navbar() {
   const onExplore = loc.pathname === "/explore";
   const onHome = loc.pathname === "/";
 
-  const navLinkBase =
-    "focus-ring relative px-2 sm:px-3.5 py-1 sm:py-1.5 text-xs rounded-full transition-colors duration-300 whitespace-nowrap z-10 active:scale-[0.97]";
-
-  const pillSpring = { type: "spring" as const, stiffness: 260, damping: 28, mass: 0.8 };
-
-  const verticalNavLinkBase =
-    "focus-ring relative px-3.5 py-2 text-xs rounded-lg transition-all duration-300 whitespace-nowrap z-10 active:scale-[0.96] text-center";
+  const iconButtonBase =
+    "focus-ring relative p-3 rounded-lg transition-all duration-300 z-10 active:scale-[0.94] flex items-center justify-center";
 
   return (
     <motion.header
-      initial={{ x: 60, opacity: 0 }}
+      initial={{ x: -60, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
       style={{ 
-        bottom: "calc(env(safe-area-inset-bottom, 0px) + 1rem)",
-        right: "calc(env(safe-area-inset-right, 0px) + 1rem)"
+        top: "50%",
+        left: "calc(env(safe-area-inset-left, 0px) + 1rem)",
+        transform: "translateY(-50%)"
       }}
       className="fixed z-50 pointer-events-none [&>*]:pointer-events-auto"
     >
       <LayoutGroup id="navbar">
       <nav
-        className={`flex flex-col items-stretch gap-1 rounded-2xl px-2 py-2 transition-all duration-300 backdrop-blur-xl border text-xs ${
+        className={`flex flex-col items-center gap-2 rounded-2xl p-2 transition-all duration-300 backdrop-blur-xl border ${
           scrolled
-            ? "bg-oklch(0.138_0.022_265)/85 border-oklch(0.182_0.04_265)/40 shadow-lg"
-            : "bg-oklch(0.138_0.022_265)/75 border-oklch(0.182_0.04_265)/30 shadow-md"
+            ? "bg-oklch(0.138_0.022_265)/90 border-oklch(0.182_0.04_265)/50 shadow-lg"
+            : "bg-oklch(0.138_0.022_265)/80 border-oklch(0.182_0.04_265)/40 shadow-md"
         }`}
       >
+        {/* Home Icon */}
         <Link
           to="/"
           preload="intent"
-          className={`relative ${verticalNavLinkBase} font-display text-sm shrink-0 ${
+          title={t("Home", "الرئيسية")}
+          className={`${iconButtonBase} ${
             onHome 
               ? "bg-oklch(0.182_0.04_265) text-foreground" 
-              : "text-foreground/80 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/50"
+              : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
           }`}
         >
-          <span className="relative">Fares.</span>
+          <Home className="w-5 h-5" />
         </Link>
         
-        <div className="h-px bg-oklch(0.182_0.04_265)/20" />
-        
+        {/* Explore Icon */}
         <Link
           to="/explore"
           preload="intent"
-          className={`${verticalNavLinkBase} ${
+          title={t("Explore", "استكشف")}
+          className={`${iconButtonBase} ${
             onExplore
               ? "bg-oklch(0.182_0.04_265) text-foreground"
-              : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/50"
+              : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
           }`}
         >
-          {t("Explore", "استكشف")}
+          <Compass className="w-5 h-5" />
         </Link>
         
+        {/* Comments Icon */}
         {showComments && (
-          <>
-            <div className="h-px bg-oklch(0.182_0.04_265)/20" />
-            <Link
-              to="/comments"
-              preload="intent"
-              className={`${verticalNavLinkBase} ${
-                onComments
-                  ? "bg-oklch(0.182_0.04_265) text-foreground"
-                  : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/50"
-              }`}
-            >
-              {t("Comments", "التعليقات")}
-            </Link>
-          </>
+          <Link
+            to="/comments"
+            preload="intent"
+            title={t("Comments", "التعليقات")}
+            className={`${iconButtonBase} ${
+              onComments
+                ? "bg-oklch(0.182_0.04_265) text-foreground"
+                : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
+            }`}
+          >
+            <MessageSquare className="w-5 h-5" />
+          </Link>
         )}
         
-        <div className="h-px bg-oklch(0.182_0.04_265)/20" />
+        {/* Divider */}
+        <div className="w-6 h-px bg-oklch(0.182_0.04_265)/30" />
         
+        {/* Contact Icon */}
         <Link
           to="/"
           hash="contact"
-          className={`${verticalNavLinkBase} bg-oklch(0.482_0.18_268) text-background hover:bg-oklch(0.482_0.18_268)/90 transition-all duration-300 shrink-0 active:scale-[0.96]`}
+          title={contactLabel}
+          className={`${iconButtonBase} bg-oklch(0.482_0.18_268) text-background hover:bg-oklch(0.482_0.18_268)/85 transition-all duration-300`}
         >
-          {contactLabel}
+          <Mail className="w-5 h-5" />
         </Link>
         
-        <div className="h-px bg-oklch(0.182_0.04_265)/20" />
+        {/* Divider */}
+        <div className="w-6 h-px bg-oklch(0.182_0.04_265)/30" />
         
+        {/* Theme & Language Toggle */}
         <div className="flex justify-center">
           <ThemeLangToggle />
         </div>

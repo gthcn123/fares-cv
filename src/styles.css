@@ -90,8 +90,8 @@
   --foreground: oklch(0.088 0.018 265);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.088 0.018 265);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.088 0.018 265);
+  --popover: oklch(0.138 0.022 265);
+  --popover-foreground: oklch(0.842 0.10 262);
   /* Primary: Mid-tone blue #5482B4 for interactive depth */
   --primary: oklch(0.482 0.18 268);
   --primary-foreground: oklch(1 0 0);
@@ -159,7 +159,7 @@
 }
 
 .dark {
-  /* ──────────────────────────────────────────────────────────────────────
+  /* ────────────────────────────────────────────────────────────────────���─
      DARK MODE: Premium deep foundation with light accents
      Background: 011025 (deep primary) | Foreground: C2E8FF (light accent)
      ────────────────────────────────────────────────────────────────────── */
