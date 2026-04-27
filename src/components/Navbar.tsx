@@ -28,7 +28,7 @@ export function Navbar() {
   const onHome = loc.pathname === "/";
 
   const iconButtonBase =
-    "focus-ring relative p-3 rounded-lg transition-all duration-300 z-10 active:scale-[0.94] flex items-center justify-center";
+    "focus-ring relative p-3 sm:p-3.5 rounded-lg transition-all duration-300 z-10 active:scale-[0.94] flex items-center justify-center";
 
   return (
     <motion.header
@@ -37,17 +37,17 @@ export function Navbar() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
       style={{ 
         top: "50%",
-        left: "calc(env(safe-area-inset-left, 0px) + 1rem)",
+        left: "calc(env(safe-area-inset-left, 0px) + 0.75rem)",
         transform: "translateY(-50%)"
       }}
       className="fixed z-50 pointer-events-none [&>*]:pointer-events-auto"
     >
       <LayoutGroup id="navbar">
       <nav
-        className={`flex flex-col items-center gap-2 rounded-2xl p-2 transition-all duration-300 backdrop-blur-xl border ${
+        className={`flex flex-col items-center gap-1.5 sm:gap-2 rounded-2xl p-1.5 sm:p-2 transition-all duration-300 backdrop-blur-xl border ${
           scrolled
-            ? "bg-oklch(0.138_0.022_265)/90 border-oklch(0.182_0.04_265)/50 shadow-lg"
-            : "bg-oklch(0.138_0.022_265)/80 border-oklch(0.182_0.04_265)/40 shadow-md"
+            ? "bg-oklch(0.088_0.018_265)/95 border-oklch(0.138_0.022_265)/60 shadow-lg"
+            : "bg-oklch(0.088_0.018_265)/90 border-oklch(0.138_0.022_265)/50 shadow-md"
         }`}
       >
         {/* Home Icon */}
@@ -57,11 +57,11 @@ export function Navbar() {
           title={t("Home", "الرئيسية")}
           className={`${iconButtonBase} ${
             onHome 
-              ? "bg-oklch(0.182_0.04_265) text-foreground" 
-              : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
+              ? "bg-oklch(0.138_0.022_265) text-foreground" 
+              : "text-foreground/60 hover:text-foreground hover:bg-oklch(0.138_0.022_265)/80"
           }`}
         >
-          <Home className="w-5 h-5" />
+          <Home className="sm:w-5 sm:h-5 w-4 h-4" />
         </Link>
         
         {/* Explore Icon */}
@@ -71,11 +71,11 @@ export function Navbar() {
           title={t("Explore", "استكشف")}
           className={`${iconButtonBase} ${
             onExplore
-              ? "bg-oklch(0.182_0.04_265) text-foreground"
-              : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
+              ? "bg-oklch(0.138_0.022_265) text-foreground"
+              : "text-foreground/60 hover:text-foreground hover:bg-oklch(0.138_0.022_265)/80"
           }`}
         >
-          <Compass className="w-5 h-5" />
+          <Compass className="sm:w-5 sm:h-5 w-4 h-4" />
         </Link>
         
         {/* Comments Icon */}
@@ -86,16 +86,16 @@ export function Navbar() {
             title={t("Comments", "التعليقات")}
             className={`${iconButtonBase} ${
               onComments
-                ? "bg-oklch(0.182_0.04_265) text-foreground"
-                : "text-foreground/70 hover:text-foreground hover:bg-oklch(0.182_0.04_265)/60"
+                ? "bg-oklch(0.138_0.022_265) text-foreground"
+                : "text-foreground/60 hover:text-foreground hover:bg-oklch(0.138_0.022_265)/80"
             }`}
           >
-            <MessageSquare className="w-5 h-5" />
+            <MessageSquare className="sm:w-5 sm:h-5 w-4 h-4" />
           </Link>
         )}
         
         {/* Divider */}
-        <div className="w-6 h-px bg-oklch(0.182_0.04_265)/30" />
+        <div className="w-5 sm:w-6 h-px bg-oklch(0.182_0.04_265)/40" />
         
         {/* Contact Icon */}
         <Link
@@ -104,11 +104,11 @@ export function Navbar() {
           title={contactLabel}
           className={`${iconButtonBase} bg-oklch(0.482_0.18_268) text-background hover:bg-oklch(0.482_0.18_268)/85 transition-all duration-300`}
         >
-          <Mail className="w-5 h-5" />
+          <Mail className="sm:w-5 sm:h-5 w-4 h-4" />
         </Link>
         
         {/* Divider */}
-        <div className="w-6 h-px bg-oklch(0.182_0.04_265)/30" />
+        <div className="w-5 sm:w-6 h-px bg-oklch(0.182_0.04_265)/40" />
         
         {/* Theme & Language Toggle */}
         <div className="flex justify-center">
